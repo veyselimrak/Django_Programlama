@@ -1,6 +1,6 @@
 from django.db import models
 
-class Hotel(model.Model):
+class Hotel(models.Model):
     STATUS = (
         ('True', 'Evet'),
         ('False', 'Hayir'),
@@ -19,8 +19,8 @@ class Hotel(model.Model):
     city = models.CharField(blank=True, max_length=50)
     country = models.CharField(blank=True, max_length=50)
     location = models.CharField(blank=True, max_length=150)
-    categoryid = ForeignKey('self', blank = True, null = True, related_name = 'children', on_delete = models.CASCADE)
-    userid = ForeignKey('self', blank = True, null = True, related_name = 'children', on_delete = models.CASCADE)
+    # categoryid = ForeignKey('self', blank = True, null = True, related_name = 'children', on_delete = models.CASCADE)
+    # userid = ForeignKey('self', blank = True, null = True, related_name = 'children', on_delete = models.CASCADE)
     create_at = models.DateTimeField(auto_now_add=True)
     update_at = models.DateTimeField(auto_now=True)
 
