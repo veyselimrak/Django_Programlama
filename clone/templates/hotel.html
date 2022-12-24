@@ -7,7 +7,7 @@
 		<div class="container text-center">
 			<div class="row">
 				<div class="col-lg-12">
-					<h1>Gallery</h1>
+					<h1><strong>RESİMLER</strong></h1>
 				</div>
 			</div>
 		</div>
@@ -20,43 +20,29 @@
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="heading-title text-center">
-						<h2>Gallery</h2>
-						<p>Lorem Ipsum is simply dummy text of the printing and typesetting</p>
+						<h2>Hoteller</h2>
+						<p>Bu kısımda var olan hotellerin tanıtımı yapılmıştır.</p>
 					</div>
 				</div>
 			</div>
 			<div class="tz-gallery">
 				<div class="row">
-					<div class="col-sm-12 col-md-4 col-lg-4">
-						<a class="lightbox" href="{% static 'images/hotel1.jpg' %}">
-							<img class="img-fluid" src="{% static 'images/hotel1.jpg' %}" alt="Gallery Images">
+					{% for hote in hotel %}
+					<div class="col-sm-12 col-md-4 col-lg-4 mb-5">
+						<a class="lightbox" href="">
+							<img class="img-fluid" src="{{hote.image.url}}" style="width: 450px; height: 450px;" alt="Gallery Images">
 						</a>
+						<p>
+							{{hote.description | truncatechars:100}}
+						</p>
+						<p>
+							{{hote.city}}
+						</p>
+						<p>
+							{{hote.country}}
+						</p>
 					</div>
-					<div class="col-sm-6 col-md-4 col-lg-4">
-						<a class="lightbox" href="{% static 'images/hotel2.jpeg' %}">
-							<img class="img-fluid" src="{% static 'images/hotel2.jpeg' %}" alt="Gallery Images">
-						</a>
-					</div>
-					<div class="col-sm-6 col-md-4 col-lg-4">
-						<a class="lightbox" href="{% static 'images/hotel3.jpg' %}">
-							<img class="img-fluid" src="{% static 'images/hotel3.jpg' %}" alt="Gallery Images">
-						</a>
-					</div>
-					<div class="col-sm-12 col-md-4 col-lg-4">
-						<a class="lightbox" href="{% static 'images/hotel4.jpg' %}">
-							<img class="img-fluid" src="{% static 'images/hotel4.jpg' %}" alt="Gallery Images">
-						</a>
-					</div>
-					<div class="col-sm-6 col-md-4 col-lg-4">
-						<a class="lightbox" href="{% static 'images/hotel5.jpg' %}">
-							<img class="img-fluid" src="{% static 'images/hotel5.jpg' %}" alt="Gallery Images">
-						</a>
-					</div> 
-					<div class="col-sm-6 col-md-4 col-lg-4">
-						<a class="lightbox" href="{% static 'images/hotel6.jpg' %}">
-							<img class="img-fluid" src="{% static 'images/hotel6.jpg' %}" alt="Gallery Images">
-						</a>
-					</div>
+					{% endfor %}
 				</div>
 			</div>
 		</div>
