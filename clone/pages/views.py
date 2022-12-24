@@ -8,5 +8,7 @@ def about(request):
 
 def blog(request):
     return render(request, 'blog.html')
+def blog(request):
+    return render(request, 'blog_detail.html')
 
 # Create your views here.

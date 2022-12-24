@@ -7,7 +7,7 @@
 		<div class="container text-center">
 			<div class="row">
 				<div class="col-lg-12">
-					<h1><strong>RESİMLER</strong></h1>
+					<h1><strong>HOTELLER</strong></h1>
 				</div>
 			</div>
 		</div>
@@ -20,7 +20,7 @@
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="heading-title text-center">
-						<h2>Hoteller</h2>
+						<h2>RESİMLER</h2>
 						<p>Bu kısımda var olan hotellerin tanıtımı yapılmıştır.</p>
 					</div>
 				</div>
@@ -29,7 +29,7 @@
 				<div class="row">
 					{% for hote in hotel %}
 					<div class="col-sm-12 col-md-4 col-lg-4 mb-5">
-						<a class="lightbox" href="">
+						<a class="lightbox" href="{% url 'hoteldetay' hote.category_id.slug hote.id %}">
 							<img class="img-fluid" src="{{hote.image.url}}" style="width: 450px; height: 450px;" alt="Gallery Images">
 						</a>
 						<p>
