@@ -18,6 +18,12 @@ class Category(models.Model):
     def __str__(self):
         return self.title
 
+class Tag(models.Model):
+    name = models.CharField(max_length = 200, null=True)
+    slug = models.SlugField(max_length=50, unique= True, null=True)
+
+    def __str__(self):
+        return self.name 
 
 class Hotel(models.Model):
     STATUS = (
@@ -32,6 +38,7 @@ class Hotel(models.Model):
     status = models.CharField(max_length=10, choices=STATUS)
     detail = models.TextField()
     star = models.FloatField()
+    tags = models.ManyToManyField(Tag, blank=True, null= True)
     address = models.CharField(blank=True, max_length=150)
     phone = models.CharField(blank=True, max_length=15)
     fax = models.CharField(blank=True, max_length=15)

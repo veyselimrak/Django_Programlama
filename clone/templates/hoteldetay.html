@@ -71,7 +71,6 @@
 						</div>
 					</div>
 				</div>
-			
 				<div class="col-xl-4 col-lg-4 col-md-6 col-sm-8 col-12 blog-sidebar">
 					<div class="right-side-blog">
 						<h3>Search</h3>
@@ -84,80 +83,17 @@
 						<h3>Categories</h3>
 						<div class="blog-categories">
 							<ul>
-								<li><a href="#"><span>Food</span></a></li>
-								<li><a href="#"><span>Pizza</span></a></li>
-								<li><a href="#"><span>Drink</span></a></li>
-								<li><a href="#"><span>Lorem Sit</span></a></li>
-								<li><a href="#"><span>Burger</span></a></li>
-								<li><a href="#"><span>Music</span></a></li>
-							</ul>
-						</div>
-						<h3>Recent Post</h3>
-						<div class="post-box-blog">
-							<div class="recent-post-box">
-								<div class="recent-box-blog">
-									<div class="recent-img">
-										<img class="img-fluid" src="images/post-img-01.jpg" alt="">
-									</div>
-									<div class="recent-info">
-										<ul>
-											<li><i class="zmdi zmdi-account"></i>Posted By : <span>Rubel Ahmed</span></li>
-											<li>|</li>
-											<li><i class="zmdi zmdi-time"></i>Time : <span>11.30 am</span></li>
-										</ul>
-										<h4>Duis feugiat neque sed dolor cursus, sed lacinia nisl pretium.</h4>
-									</div>
-								</div>
-								<div class="recent-box-blog">
-									<div class="recent-img">
-										<img class="img-fluid" src="images/post-img-02.jpg" alt="">
-									</div>
-									<div class="recent-info">
-										<ul>
-											<li><i class="zmdi zmdi-account"></i>Posted By : <span>Rubel Ahmed</span></li>
-											<li>|</li>
-											<li><i class="zmdi zmdi-time"></i>Time : <span>11.30 am</span></li>
-										</ul>
-										<h4>Duis feugiat neque sed dolor cursus, sed lacinia nisl pretium.</h4>
-									</div>
-								</div>
-								<div class="recent-box-blog">
-									<div class="recent-img">
-										<img class="img-fluid" src="images/post-img-03.jpg" alt="">
-									</div>
-									<div class="recent-info">
-										<ul>
-											<li><i class="zmdi zmdi-account"></i>Posted By : <span>Rubel Ahmed</span></li>
-											<li>|</li>
-											<li><i class="zmdi zmdi-time"></i>Time : <span>11.30 am</span></li>
-										</ul>
-										<h4>Duis feugiat neque sed dolor cursus, sed lacinia nisl pretium.</h4>
-									</div>
-								</div>
-								<div class="recent-box-blog">
-									<div class="recent-img">
-										<img class="img-fluid" src="images/post-img-01.jpg" alt="">
-									</div>
-									<div class="recent-info">
-										<ul>
-											<li><i class="zmdi zmdi-account"></i>Posted By : <span>Rubel Ahmed</span></li>
-											<li>|</li>
-											<li><i class="zmdi zmdi-time"></i>Time : <span>11.30 am</span></li>
-										</ul>
-										<h4>Duis feugiat neque sed dolor cursus, sed lacinia nisl pretium.</h4>
-									</div>
-								</div>
-							</div>
+								{% for category in categories %}
+								<li><a href="{% url 'hotel_by_category' category.slug %}"><span>{{category.title}}</span></a></li>
+								{% endfor %}
+							</ul>	
 						</div>
 						<h3>Recent Tag</h3>
 						<div class="blog-tag-box">
 							<ul class="list-inline tag-list">
-								<li class="list-inline-item"><a href="#">Food</a></li>
-								<li class="list-inline-item"><a href="#">Drink</a></li>
-								<li class="list-inline-item"><a href="#">Nature</a></li>
-								<li class="list-inline-item"><a href="#">Italian</a></li>
-								<li class="list-inline-item"><a href="#">Bootstrap4</a></li>
-								<li class="list-inline-item"><a href="#">Fashion</a></li>
+								{% for tag in tags %}
+								<li class="list-inline-item"><a href="{% url 'hotel_by_tag' tag.slug %}">{% if tag.slug in request.path %} <b>{{tag.name}}</b> {% else %} {{tag.name}} {% endif %}</a></li>
+								{% endfor %}
 							</ul>
 						</div>
 					</div>
@@ -177,7 +113,7 @@
 					<div class="overflow-hidden">
 						<h4>Phone</h4>
 						<p class="lead">
-							+01 123-456-4590
+							{{hoteldetay.phone}}
 						</p>
 					</div>
 				</div>
@@ -186,7 +122,7 @@
 					<div class="overflow-hidden">
 						<h4>Email</h4>
 						<p class="lead">
-							yourmail@gmail.com
+							{{hoteldetay.email}}
 						</p>
 					</div>
 				</div>
@@ -195,7 +131,7 @@
 					<div class="overflow-hidden">
 						<h4>Location</h4>
 						<p class="lead">
-							800, Lorem Street, US
+							{{hoteldetay.address}}
 						</p>
 					</div>
 				</div>
