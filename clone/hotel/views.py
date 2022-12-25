@@ -7,6 +7,13 @@ def hotel_list(request):
         'hotel' : hotel,
     }
     return render(request, 'hotel.html', context)
+
+def hotel_list2(request):
+    index =  Hotel.objects.all()
+    context = {
+        'index' : index,
+    }
+    return render(request, 'index.html', context)
     
 def hoteldetay(request, category_slug, hotel_id):
 
