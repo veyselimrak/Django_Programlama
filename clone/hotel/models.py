@@ -1,4 +1,5 @@
 from django.db import models
+from rooms.models import Room
 
 class Category(models.Model):
     STATUS = (
@@ -30,6 +31,7 @@ class Hotel(models.Model):
         ('True', 'Evet'),
         ('False', 'Hayir'),
     )
+    room = models.ForeignKey(Room, null = True, on_delete= models.CASCADE)
     category_id = models.ForeignKey(Category, null = True, on_delete = models.DO_NOTHING)
     title = models.CharField(max_length=50)
     keywords = models.CharField(blank=True, max_length=200)

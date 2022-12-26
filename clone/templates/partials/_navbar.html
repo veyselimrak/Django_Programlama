@@ -10,19 +10,14 @@
 				  <span class="navbar-toggler-icon"></span>
 				</button>
 				<div class="collapse navbar-collapse" id="navbars-rs-food">
+		
 					<ul class="navbar-nav ml-auto">
 						<li class="nav-item {% if '/' == request.path %} active {% endif %}"><a class="nav-link" href="{% url 'index' %}">Veyselin Mekanı</a></li>
 						<li class="nav-item"><a class="nav-link" href="menu.html">Menü</a></li>
 						<li class="nav-item {% if 'about' in request.path %} active {% endif %}"><a class="nav-link" href="{% url 'about' %}">Hakkımızda</a></li>
 						<li class="nav-item {% if 'hotel' == request.path %} active {% endif %}"><a class="nav-link" href="{% url 'hotel' %}">Hoteller</a></li>
-						<li class="nav-item active dropdown">
-						<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Sayfalar</a>
-							<div class="dropdown-menu" aria-labelledby="dropdown-a">
-								<a class="dropdown-item " href="oda.html">Oda</a>
-								<a class="dropdown-item " href="hoteldetay.html">Hoteller</a>
-							</div>
-						</li>
-						<li class="nav-item"><a class="nav-link" href="contact.html">İletişim</a></li>
+						<li class="nav-item active dropdown"><a class="dropdown-item {% if 'rooms' == request.path %} active {% endif %}" href="{% url 'rooms' %}">Odalar</a></li>
+						<li class="nav-item {% if 'contact' == request.path %} active {% endif %}"><a class="nav-link" href="{% url 'contact' %}">İletişim</a></li>
 					</ul>
 				</div>
 			</div>

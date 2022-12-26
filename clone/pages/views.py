@@ -1,8 +1,10 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
-from hotel.models import Hotel
-# def index(request):
-#     return render(request, 'index.html')
+from django.views.generic.edit import FormView
+from hotel.models import Hotel, Room
+from .forms import ContactForm
+from django.urls import reverse_lazy
+# from django.contrib.messages.views import SuccessMessageMixin
 
 class IndexView(TemplateView):
     template_name = "index.html"
@@ -12,15 +14,25 @@ class IndexView(TemplateView):
         context['index'] = Hotel.objects.all().filter(status=True)
         return context
         
-# def about(request):
-#     return render(request, 'about.html')
-
 class AboutView(TemplateView):
     template_name = "about.html"
 
 def blog(request):
     return render(request, 'blog.html')
+    
 def blog(request):
     return render(request, 'blog_detail.html')
 
-# Create your views here.
+class ContactView(FormView):
+    template_name = 'contact.html'
+    form_class = ContactForm
+    succes_url = reverse_lazy('contact')
+
+    # success_message = "Mesajınız başarıyla alındı."
+
+    def form_valid(self, form):
+        form.save()
+        return super().form_valid(form)
+
+
+
