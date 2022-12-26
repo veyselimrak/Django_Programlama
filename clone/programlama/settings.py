@@ -32,7 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
 #Kayıt sırasına göre çalışır.
-
+    'accounts.apps.AccountsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     'pages.apps.PagesConfig',
     'hotel.apps.HotelConfig',
     'rooms.apps.RoomsConfig',
-
 ]
 
 MIDDLEWARE = [

@@ -13,11 +13,17 @@
 		
 					<ul class="navbar-nav ml-auto">
 						<li class="nav-item {% if '/' == request.path %} active {% endif %}"><a class="nav-link" href="{% url 'index' %}">Veyselin Mekanı</a></li>
-						<li class="nav-item"><a class="nav-link" href="menu.html">Menü</a></li>
 						<li class="nav-item {% if 'about' in request.path %} active {% endif %}"><a class="nav-link" href="{% url 'about' %}">Hakkımızda</a></li>
 						<li class="nav-item {% if 'hotel' == request.path %} active {% endif %}"><a class="nav-link" href="{% url 'hotel' %}">Hoteller</a></li>
 						<li class="nav-item active dropdown"><a class="dropdown-item {% if 'rooms' == request.path %} active {% endif %}" href="{% url 'rooms' %}">Odalar</a></li>
 						<li class="nav-item {% if 'contact' == request.path %} active {% endif %}"><a class="nav-link" href="{% url 'contact' %}">İletişim</a></li>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Giriş</a>
+							<div class="dropdown-menu" aria-labelledby="dropdown-a">
+								<a class="dropdown-item" href="{% url 'register' %}">Kayıt<i class="fa fa-user-plus ml-4"></i></a>
+								<a class="dropdown-item" href="{% url 'login' %}">Login<i class="fa fa-sign-in ml-4"></i></a>
+							</div>
+						</li>
 					</ul>
 				</div>
 			</div>

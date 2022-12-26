@@ -4,7 +4,7 @@ from django.views.generic.edit import FormView
 from hotel.models import Hotel, Room
 from .forms import ContactForm
 from django.urls import reverse_lazy
-# from django.contrib.messages.views import SuccessMessageMixin
+from django.contrib.messages.views import SuccessMessageMixin
 
 class IndexView(TemplateView):
     template_name = "index.html"
@@ -23,12 +23,12 @@ def blog(request):
 def blog(request):
     return render(request, 'blog_detail.html')
 
-class ContactView(FormView):
+class ContactView(FormView, SuccessMessageMixin):
     template_name = 'contact.html'
     form_class = ContactForm
-    succes_url = reverse_lazy('contact')
+    success_url = reverse_lazy('contact')
 
-    # success_message = "Mesajınız başarıyla alındı."
+    success_message = "Mesajınız başarıyla alındı."
 
     def form_valid(self, form):
         form.save()
