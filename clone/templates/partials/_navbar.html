@@ -20,8 +20,21 @@
 						<li class="nav-item dropdown">
 							<a class="nav-link dropdown-toggle" href="#" id="dropdown-a" data-toggle="dropdown">Giriş</a>
 							<div class="dropdown-menu" aria-labelledby="dropdown-a">
-								<a class="dropdown-item" href="{% url 'register' %}">Kayıt<i class="fa fa-user-plus ml-4"></i></a>
+
+								{% if user.is_authenticated %}
+								<a class="dropdown-item" href="{% url 'dashboard' %}">{{ user.username }}</a>
+								<a class="dropdown-item" href="javascript:{document.getElementById('logout').submit()}"><i class="fa fa-sign-out ml-4"></i></a>
+								<form action="{% url 'logout' %}" method="POST" id="logout"></form>
+									{% csrf_token %}
+									<input type="hidden">
+								{% else %}
 								<a class="dropdown-item" href="{% url 'login' %}">Login<i class="fa fa-sign-in ml-4"></i></a>
+								<a class="dropdown-item" href="{% url 'register' %}">Kayıt<i class="fa fa-user-plus ml-4"></i></a>
+								
+								{% endif %}
+
+								<a class="dropdown-item" href="{% url 'login' %}">Login<i class="fa fa-sign-in ml-4"></i></a>
+								<a class="dropdown-item" href="{% url 'register' %}">Kayıt<i class="fa fa-user-plus ml-4"></i></a>
 							</div>
 						</li>
 					</ul>

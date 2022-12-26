@@ -31,7 +31,7 @@ def hoteldetay(request, category_slug, hotel_id):
 
 def category_list(request, category_slug):
 
-    category_hotels = Hotel.objects.all().filter(category_id__slug = category_slug)
+    category_hotels = Hotel.objects.all().filter(category__slug = category_slug)
     categories = Category.objects.all()
     tags = Tag.objects.all()
 
