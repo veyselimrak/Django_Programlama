@@ -32,11 +32,7 @@
 								<img class="img-fluid" src="{{ hoteldetay.image.url }}" alt="">							
 							</div>
 							<div class="inner-blog-detail details-page">
-								<ul>
-									<li><i class="zmdi zmdi-account"></i>Posted By : <span>Rubel Ahmed</span></li>
-									<li>|</li>
-									<li><i class="zmdi zmdi-time"></i>Time : <span>11.30 am</span></li>
-								</ul>
+
 								<blockquote>
 									<p><h4>{{ hoteldetay.description }}</h4>
 									İlan adresi: {{hoteldetay.address}}<br>
@@ -47,24 +43,36 @@
 							</div>
 						</div>	
 						<div class="comment-respond-box">
-							<h3>Leave your comment </h3>
+							<h3>Yorumunu yaz </h3>
 							<div class="comment-respond-form">
-								<form id="commentrespondform" class="comment-form-respond row" method="post">
-									<div class="col-lg-6 col-md-6 col-sm-6">
-										<div class="form-group">
-											<input id="name_com" class="form-control" name="name" placeholder="Name" type="text">
+								{% if mesaj %}
+									{% for message in mesaj %}
+										<div class="alert alert-{{ message.tags }}">
+											{{ message }}	
 										</div>
+									{% endfor %}
+								{% endif %}
+	
+								<form action="" method="POST">
+									{% csrf_token %}
+									<div class="col-md-12">
 										<div class="form-group">
-											<input id="email_com" class="form-control" name="email" placeholder="Your Email" type="email">
-										</div>
+											{{ form.email }}
+											<div class="help-block with-errors"></div>
+										</div>                                 
 									</div>
-									<div class="col-lg-6 col-md-6 col-sm-6">
+									<div class="col-md-12">
 										<div class="form-group">
-											<textarea class="form-control" id="textarea_com" placeholder="Your Message" rows="2"></textarea>
-										</div>
+											{{ form.mesaj }}
+											<div class="help-block with-errors"></div>
+										</div>                                 
 									</div>
-									<div class="col-lg-12 col-md-12 col-sm-12">
-										<button class="btn btn-submit">Submit comment</button>
+									<div class="submit-button text-center">
+										<a href="{% url 'comment' %}">
+										<button class="btn btn-common" type="submit" style="margin-right: 300px;">Gönder</button>
+										</a>
+										<div id="msgSubmit" class="h3 text-center hidden"></div> 
+										<div class="clearfix"></div> 
 									</div>
 								</form>
 							</div>

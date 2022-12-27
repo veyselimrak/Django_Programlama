@@ -112,14 +112,14 @@
 			</div>
 			<div class="modal-body">
 				<p>Aşağıdaki hotele rezervasyon yaptırmak üzeresiniz.</p>
-				<h1>{{hotel.name}}</h1>
+				<h1>{{hoteldetay.title}}</h1>
 			</div>
 			<div class="modal-footer">
-				<form action="{% url 'enroll_the_course' %}" method="POST">
+				<form action="{% url 'enroll_the_hotel' %}" method="POST">
 					{% csrf_token %}
 					<input type="hidden" name="user_id" value="{{hotel.id}}">
 					<input type="hidden" name="course_id" value="{{room_detail.id}}">
-					<input type="submit" value="I AM SURE" class="btn btn-success">
+					<input type="submit" value="Eminim" class="btn btn-success">
 				</form>
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">
 					CANCEL

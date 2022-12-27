@@ -1,5 +1,8 @@
 from django.db import models
 from rooms.models import Room
+from django import forms
+
+
 
 class Category(models.Model):
     STATUS = (
@@ -54,6 +57,10 @@ class Hotel(models.Model):
     def __str__(self):
         return self.title
 
+class Images(models.Model):
+    title = models.CharField(max_length=50)
+    product = models.ForeignKey(Hotel, on_delete=models.CASCADE)
+    images = models.ImageField(blank=True, upload_to='images/')
 
-
-# Create your models here.
+    def __str__(self):
+        return self.title

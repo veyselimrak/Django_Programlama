@@ -35,4 +35,3 @@ class ContactView(FormView, SuccessMessageMixin):
         return super().form_valid(form)
 
 
-

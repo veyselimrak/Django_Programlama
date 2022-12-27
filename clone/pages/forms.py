@@ -18,8 +18,8 @@ class ContactForm(forms.ModelForm):
         'class': 'form-control',
         'placeholder': 'Message'
     }))
-
     class Meta:
         model = Contact
         fields = ['name', 'email', 'phone', 'message']
+
 

@@ -47,3 +47,11 @@ def user_register(request):
         form = RegisterForm()
 
     return render(request, 'register.html', {'form':form})
+
+
+def enroll_the_hotel(request):
+    return render(request, 'index.html')
+
+
+
+
