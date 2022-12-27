@@ -20,7 +20,7 @@
 			<div class="row">
 				<div class="col-lg-12">
 					<div class="heading-title text-center">
-						<h2>Oda</h2>
+						<h2>Oda Detayları</h2>
 						<p>Bu sayfada odanın tanıtımı yapılmıştır.</p>
 					</div>
 				</div>
@@ -31,14 +31,33 @@
 						<img src="{{ room_detail.image.url }}">
 						<div class="team-content">
 							<h3 class="title">{{ room_detail.title }}</h3>
-							<span class="post">{{ room_detail.description }}</span>
+							a<h5 class="title">{{ room_detail.price }}</h5>
 							<ul class="social">
 								<li><a href="{{ room_detail.facebook }}"><i class="fa fa-facebook-f"></i></a></li>
 								<li><a href="{{ room_detail.twitter }}"><i class="fa fa-twitter"></i></a></li>
 							</ul>
 						</div>
 					</div>
-				</div>			
+					<div style="margin-left: 90px;">
+						{% if user.is_authenticated %}
+							<br>
+							<p>
+								{% if course in enrolled_hotel %}
+								<button type="submit" class="btn btn-outline-danger rounded-0" data-toggle="modal"
+									data-target="#releaseModal">
+									<span>RELEASE</span>
+								</button>
+								{% else %}
+								<button type="submit" class="btn btn-outline-success rounded-0" data-toggle="modal" data-target="#enrollModal">
+									<span style="margin-right: 20px;">Rezervasyon</span>
+								</button>
+								{% endif %}
+							</p>	
+						{% endif %}
+					</div>
+				</div>	
+				<br><br>
+					<p style="margin-left: 20px;">{{ room_detail.description }}</p>	
 			</div>
 		</div>
 	</div>
@@ -79,4 +98,34 @@
 		</div>
 	</div>
 	<!-- End Contact info -->
+
+<!-- ENROLL Modal -->
+<div class="modal fade" id="enrollModal" tabindex="-1" role="dialog" aria-labelledby="enrollModalLabel"
+	aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h2 class="modal-title" id="enrollModalLabel">Enroll The Course</h2>
+				<button type="button" class="close" data-dismiss="modal">
+					<span>&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<p>Aşağıdaki hotele rezervasyon yaptırmak üzeresiniz.</p>
+				<h1>{{hotel.name}}</h1>
+			</div>
+			<div class="modal-footer">
+				<form action="{% url 'enroll_the_course' %}" method="POST">
+					{% csrf_token %}
+					<input type="hidden" name="user_id" value="{{hotel.id}}">
+					<input type="hidden" name="course_id" value="{{room_detail.id}}">
+					<input type="submit" value="I AM SURE" class="btn btn-success">
+				</form>
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">
+					CANCEL
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
 {% endblock %}

@@ -47,21 +47,3 @@ def user_register(request):
         form = RegisterForm()
 
     return render(request, 'register.html', {'form':form})
-
-
-def user_logout(request):
-    logout(request)
-    return redirect('index') 
-
-
-@login_required(login_url='login')
-def user_dashboard(request):
-    current_user = request.user
-
-    hotels = current_user.hotel_joined.all()
-
-    context = {
-        'hotels': hotels
-    }
-
-    return render(request, 'dashboard.html', context)
